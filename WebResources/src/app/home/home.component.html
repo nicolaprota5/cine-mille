@@ -1,0 +1,75 @@
+<div class="jumbotron">
+    <div class="container">
+
+        <form class="row g-3" [formGroup]="formGroup">
+
+
+            <div class="col-md-4">
+                <label for="dataInizio" class="form-label">Settimana Programmazione</label>
+                <input formControlName="weekProgrammazione" type="week" class="form-control" id="dataInizio">
+            </div>
+            <div class="col-md-4">
+                <label for="Genere" class="form-label">Genere</label>
+                <select id="Genere" class="form-select" formControlName="genres">
+                    <option selected>Choose...</option>
+                    <option *ngFor="let g of genres">{{g}}</option>
+                </select>
+            </div>
+
+        </form>
+
+
+        <div class="row">
+
+            <h3>Programmazione</h3>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titolo</th>
+                        <th scope="col">Genere</th>
+                        <th scope="col">Direttore</th>
+                        <th scope="col">Data Inizio Programmazione</th>
+                        <th scope="col">Data Fine Programmazione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let f of programmazionList; let i = index">
+                        <th scope="row">{{i + 1}}</th>
+                        <td>{{f?.title}}</td>
+                        <td>{{f?.genres}}</td>
+                        <td>{{f?.director}}</td>
+                        <td>{{f?.dataInizioProgrammazione}}</td>
+                        <td>{{f?.dataFineProgrammazione}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="row">
+            <div class="col-12">
+                <div class="form-check">
+                    <input #storico class="form-check-input" [(ngModel)]="isChecked" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Visualizza Storico
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="isChecked">
+            <div class="col-md-4" *ngFor="let film of responseList">
+
+                <div class="card">
+                    <img class="card-img-top" src="{{film?.posterUrl}}" alt="Card image cap">
+                    <div class="card-body">
+                        <p class="card-text">{{film?.title}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
