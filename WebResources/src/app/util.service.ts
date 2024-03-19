@@ -17,7 +17,7 @@ export class UtilService {
 
     const value: string[] = weekInput.split("W");
 
-    return Number(value[1].substring(0));
+    return Number(value[1]);
 
   }
 
