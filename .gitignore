@@ -42,3 +42,4 @@ build/
 WebResources/package-lock.json
 WebResources/.editorconfig
 logs/spring-boot-logger.log
+/WebResources/dist
